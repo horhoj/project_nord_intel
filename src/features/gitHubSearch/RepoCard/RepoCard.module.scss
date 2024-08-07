@@ -1,0 +1,68 @@
+.RepoCard {
+  background-color: #F2F2F2;
+  display: flex;
+  min-width: 480px;
+  max-width: 480px;
+  margin-right: 0;
+  display: flex;
+  flex-grow: 1;
+  padding: 30px;
+  flex-direction: column;
+}
+
+.emptyRepo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.repoName {
+  font-size: 32px;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.langAndStarsWrapper {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lang {
+  background-color: #2196F3;
+  color: #fff;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 100px;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lic {
+  margin-top: 24px;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.topics {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.topic {
+  background-color: #dfdfdf;
+
+  width: fit-content;
+  padding: 10px;
+  border-radius: 100px;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}

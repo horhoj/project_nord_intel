@@ -1,0 +1,59 @@
+.Paginator {
+  padding: 40px;
+  display: flex;
+  gap: 30px;
+  justify-content: flex-end;
+  margin: auto auto 0 auto;
+
+  width: 100%;
+}
+
+.btn {
+  min-width: 40px;
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: #2196F3;
+    color: #fff;
+  }
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 40px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.perPage {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.select {
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 4px;
+  text-align: center;
+
+  &:hover {
+    background-color: #2196F3;
+    color: #fff;
+
+    &>option {
+      background-color: #fff;
+      color: #000;
+    }
+  }
+}

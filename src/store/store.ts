@@ -3,9 +3,11 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import * as rp from 'redux-persist';
 import { settingsReducer } from './settingsSlice';
+import { gitHubSearchReducer } from '~/features/gitHubSearch/gitHubSearchSlice';
 
 const reducers = combineReducers({
   settings: settingsReducer,
+  gitHubSearch: gitHubSearchReducer,
 });
 
 const persistedReducer = persistReducer(

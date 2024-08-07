@@ -3,4 +3,6 @@ export const DEFAULT_HEADERS = {
   'Content-Type': 'application/json',
 };
 
-export const BASE_URL = 'https://dummyjson.com/products';
+export const BASE_URL = 'https://api.github.com/';
+
+export const PER_PAGE = 6;

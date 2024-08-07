@@ -1,0 +1,33 @@
+.Search {
+  background-color: #00838F;
+  min-height: 80px;
+  display: flex;
+  padding: 0 32px;
+  gap: 8px;
+
+  align-items: center;
+  transition: opacity 200ms;
+}
+
+.searchInput {
+  height: 42px;
+  padding: 16px 9px;
+  border: none;
+  border-radius: 4px;
+  max-width: 912px;
+  width: 100%;
+}
+
+.searchBtn {
+  height: 42px;
+  background-color: #2196F3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 22px;
+  cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.5;
+}
