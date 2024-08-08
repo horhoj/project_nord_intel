@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { Box } from '@mui/material';
 import styles from './RepoCard.module.scss';
 import { RepoCardData } from './RepoCard.types';
 import { StarFilledIcon } from '~/assets/icons';
@@ -20,29 +21,29 @@ export function RepoCard({ data }: RepoCardProps) {
   }, [data]);
 
   return (
-    <div className={styles.RepoCard}>
-      {data === null && <div className={styles.emptyRepo}>Выберите репозиторий</div>}
+    <Box className={styles.RepoCard}>
+      {data === null && <Box className={styles.emptyRepo}>Выберите репозиторий</Box>}
       {data !== null && (
         <>
-          <div className={styles.repoName}>{data.full_name || data.name}</div>
-          <div className={styles.langAndStarsWrapper}>
-            <div className={styles.lang}>{data.language || 'не указан'}</div>
-            <div className={styles.stars}>
+          <Box className={styles.repoName}>{data.full_name || data.name}</Box>
+          <Box className={styles.langAndStarsWrapper}>
+            <Box className={styles.lang}>{data.language || 'не указан'}</Box>
+            <Box className={styles.stars}>
               <StarFilledIcon /> {data.stargazers_count.toLocaleString()}
-            </div>
-          </div>
+            </Box>
+          </Box>
           {topics && (
-            <div className={styles.topics}>
+            <Box className={styles.topics}>
               {topics.map((el) => (
-                <div key={el.id} className={styles.topic}>
+                <Box key={el.id} className={styles.topic}>
                   {el.value}
-                </div>
+                </Box>
               ))}
-            </div>
+            </Box>
           )}
-          <div className={styles.lic}>{data.license?.name || 'Лицензия не указана'}</div>
+          <Box className={styles.lic}>{data.license?.name || 'Лицензия не указана'}</Box>
         </>
       )}
-    </div>
+    </Box>
   );
 }

@@ -1,4 +1,6 @@
+import { Box, Button, MenuItem, Select } from '@mui/material';
 import styles from './Paginator.module.scss';
+import { ChevronLeftFilledIcon, ChevronRightFilledIcon } from '~/assets/icons';
 
 interface PaginatorProps {
   onPageChange: (page: number) => void;
@@ -39,42 +41,45 @@ export function Paginator({ onPageChange, page, disabled, pageCount, onChangePer
   };
 
   return (
-    <div className={styles.Paginator}>
-      <div className={styles.perPage}>
-        <span>Строк на странице</span>
-        <select
+    <Box className={styles.Paginator}>
+      <Box className={styles.perPage}>
+        <Box>Строк на странице</Box>
+        <Select
           onChange={(e) => onChangePerPage(+e.target.value)}
           value={perPage.toString()}
           className={styles.select}
           disabled={disabled}
+          sx={{ boxShadow: 'none', '.MuiOutlinedInput-notchedOutline': { border: 0 } }}
         >
           {PER_PAGE_VALUES.map((el) => (
-            <option key={el} value={el}>
+            <MenuItem key={el} value={el}>
               {el}
-            </option>
+            </MenuItem>
           ))}
-        </select>
-      </div>
-      <div className={styles.page}>
+        </Select>
+      </Box>
+      <Box className={styles.page}>
         {page}
         {' из '}
         {pageCount}
-      </div>
-      <div className={styles.buttons}>
-        <button className={styles.btn} onClick={handleGoToFirstPage} disabled={disabled}>
-          {'<<'}
-        </button>
-        <button className={styles.btn} onClick={handleGoToToPrevPage} disabled={disabled}>
-          {'<'}
-        </button>
+      </Box>
+      <Box className={styles.buttons}>
+        <Button className={styles.btn} onClick={handleGoToFirstPage} disabled={disabled}>
+          <ChevronLeftFilledIcon />
+          <ChevronLeftFilledIcon />
+        </Button>
+        <Button className={styles.btn} onClick={handleGoToToPrevPage} disabled={disabled}>
+          <ChevronLeftFilledIcon />
+        </Button>
 
-        <button className={styles.btn} onClick={handleGoToNextPage} disabled={disabled}>
-          {'>'}
-        </button>
-        <button className={styles.btn} onClick={handleGoToLastPage} disabled={disabled}>
-          {'>>'}
-        </button>
-      </div>
-    </div>
+        <Button className={styles.btn} onClick={handleGoToNextPage} disabled={disabled}>
+          <ChevronRightFilledIcon />
+        </Button>
+        <Button className={styles.btn} onClick={handleGoToLastPage} disabled={disabled}>
+          <ChevronRightFilledIcon />
+          <ChevronRightFilledIcon />
+        </Button>
+      </Box>
+    </Box>
   );
 }

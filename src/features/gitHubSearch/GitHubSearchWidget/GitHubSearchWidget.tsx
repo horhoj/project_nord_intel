@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Box } from '@mui/material';
 import { Search } from '../Search';
 import { getLastPage, getSearchParams, getSortParams, prepareParams, prepareParamsToURL } from '../helpers';
 import { gitHubSearchSlice } from '../gitHubSearchSlice';
@@ -68,18 +69,18 @@ export function GitHubSearchWidget() {
   return (
     <>
       <Spinner isShow={isLoading} />
-      <div className={styles.GitHubSearchWidget}>
+      <Box className={styles.GitHubSearchWidget}>
         <Search value={params.search} onSearch={handleSearch} disabled={isLoading} />
         {fetchReposRequest.error && (
-          <div className={styles.error}>
-            <div>
-              <strong>Ошибка получения данных:</strong>
-            </div>
-            <div>{fetchReposRequest.error.errorResponseMessage || fetchReposRequest.error.errorMessage}</div>
-          </div>
+          <Box className={styles.error}>
+            <Box>
+              <Box component={'strong'}>Ошибка получения данных:</Box>
+            </Box>
+            <Box>{fetchReposRequest.error.errorResponseMessage || fetchReposRequest.error.errorMessage}</Box>
+          </Box>
         )}
-        <div className={styles.results}>
-          <div className={styles.resultTable}>
+        <Box className={styles.results}>
+          <Box className={styles.resultTable}>
             {params.search === '' && <WelcomeMsg />}
             {fetchReposRequest.data !== null && (
               <>
@@ -104,12 +105,12 @@ export function GitHubSearchWidget() {
                 )}
               </>
             )}
-          </div>
+          </Box>
           {fetchReposRequest.data !== null && (
             <RepoCard data={rowSelectIdx === null ? null : fetchReposRequest.data.items[rowSelectIdx] ?? null} />
           )}
-        </div>
-      </div>
+        </Box>
+      </Box>
     </>
   );
 }

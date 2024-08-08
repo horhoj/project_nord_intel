@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { Box, Button, Table } from '@mui/material';
 import styles from './SearchResultTable.module.scss';
 import { SearchResultTableItem, SortType } from './SearchResultTable.types';
 import { ArrowDown, ArrowUp } from '~/assets/icons';
@@ -26,69 +27,70 @@ export function SearchResultTable({
   rowSelectIdx,
 }: SearchResultTableProps) {
   return (
-    <div className={classNames(styles.SearchResultTable, disabled && styles.disabled)}>
-      <div>
-        <div className={styles.title}>Результаты поиска</div>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>
-                <button
+    <Box className={classNames(styles.SearchResultTable, disabled && styles.disabled)}>
+      <Box>
+        <Box className={styles.title}>Результаты поиска</Box>
+        <Table className={styles.table}>
+          <Box component={'thead'}>
+            <Box component={'tr'}>
+              <Box component={'th'}>
+                <Button
                   className={styles.columnHeaderButton}
                   onClick={() => alert(ALERT_ERROR_MSG)}
                   disabled={disabled}
                 >
                   Название
-                </button>
-              </th>
-              <th>
-                <button
+                </Button>
+              </Box>
+              <Box component={'th'}>
+                <Button
                   className={styles.columnHeaderButton}
                   onClick={() => alert(ALERT_ERROR_MSG)}
                   disabled={disabled}
                 >
                   Язык
-                </button>
-              </th>
-              <th>
-                <button className={styles.columnHeaderButton} onClick={() => onSort('forks')} disabled={disabled}>
+                </Button>
+              </Box>
+              <Box component={'th'}>
+                <Button className={styles.columnHeaderButton} onClick={() => onSort('forks')} disabled={disabled}>
                   {sort === 'forks' && order === 'asc' && <ArrowUp />}
                   {sort === 'forks' && order === 'desc' && <ArrowDown />} Число форков
-                </button>
-              </th>
-              <th>
-                <button className={styles.columnHeaderButton} onClick={() => onSort('stars')} disabled={disabled}>
+                </Button>
+              </Box>
+              <Box component={'th'}>
+                <Button className={styles.columnHeaderButton} onClick={() => onSort('stars')} disabled={disabled}>
                   {sort === 'stars' && order === 'asc' && <ArrowUp />}
                   {sort === 'stars' && order === 'desc' && <ArrowDown />} Число звезд
-                </button>
-              </th>
-              <th>
-                <button className={styles.columnHeaderButton} onClick={() => onSort('updated')} disabled={disabled}>
+                </Button>
+              </Box>
+              <Box component={'th'}>
+                <Button className={styles.columnHeaderButton} onClick={() => onSort('updated')} disabled={disabled}>
                   {sort === 'updated' && order === 'asc' && <ArrowUp />}{' '}
                   {sort === 'updated' && order === 'desc' && <ArrowDown />} Дата обновления
-                </button>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
+                </Button>
+              </Box>
+            </Box>
+          </Box>
+          <Box component={'tbody'}>
             {searchResult.map((row, i) => (
-              <tr
+              <Box
+                component={'tr'}
                 key={row.id}
                 role={'button'}
                 onClick={() => onRowSelect(i)}
                 className={classNames(styles.row, i === rowSelectIdx && styles.rowSelect)}
               >
-                <td>{row.full_name || row.name}</td>
-                <td>{row.language}</td>
-                <td>{row.forks}</td>
-                <td>{row.stargazers_count}</td>
-                <td>{new Date(row.pushed_at).toLocaleString()}</td>
-              </tr>
+                <Box component={'td'}>{row.full_name || row.name}</Box>
+                <Box component={'td'}>{row.language}</Box>
+                <Box component={'td'}>{row.forks}</Box>
+                <Box component={'td'}>{row.stargazers_count}</Box>
+                <Box component={'td'}>{new Date(row.pushed_at).toLocaleString()}</Box>
+              </Box>
             ))}
-          </tbody>
-        </table>
-        {searchResult.length === 0 && <div className={styles.title}>Ничего не найдено</div>}
-      </div>
-    </div>
+          </Box>
+        </Table>
+        {searchResult.length === 0 && <Box className={styles.title}>Ничего не найдено</Box>}
+      </Box>
+    </Box>
   );
 }

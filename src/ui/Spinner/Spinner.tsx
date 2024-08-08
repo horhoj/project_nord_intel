@@ -1,5 +1,6 @@
 import { CSSTransition } from 'react-transition-group';
 import { useRef } from 'react';
+import { Box } from '@mui/material';
 import { Portal } from '../Portal';
 import styles from './Spinner.module.scss';
 
@@ -24,7 +25,7 @@ export function Spinner({ isShow }: SpinnerProps) {
           exitActive: styles.exitActive,
         }}
       >
-        <div className={styles.Spinner} ref={ref} />
+        <Box className={styles.Spinner} ref={ref} />
       </CSSTransition>
     </Portal>
   );

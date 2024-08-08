@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react';
 import classNames from 'classnames';
+import { Box, Button, Input } from '@mui/material';
 import styles from './Search.module.scss';
 
 interface SearchProps {
@@ -21,8 +22,13 @@ export function Search({ onSearch, value, disabled }: SearchProps) {
   };
 
   return (
-    <form className={classNames(styles.Search, disabled && styles.disabled)} noValidate={true} onSubmit={handleSubmit}>
-      <input
+    <Box
+      component={'form'}
+      className={classNames(styles.Search, disabled && styles.disabled)}
+      noValidate={true}
+      onSubmit={handleSubmit}
+    >
+      <Input
         type="text"
         className={styles.searchInput}
         onChange={(e) => setSearchValue(e.target.value)}
@@ -30,10 +36,11 @@ export function Search({ onSearch, value, disabled }: SearchProps) {
         autoFocus={true}
         placeholder={'Поисковый запрос'}
         readOnly={disabled}
+        disableUnderline={true}
       />
-      <button type={'submit'} className={styles.searchBtn} disabled={disabled}>
+      <Button type={'submit'} className={styles.searchBtn} disabled={disabled}>
         Искать
-      </button>
-    </form>
+      </Button>
+    </Box>
   );
 }

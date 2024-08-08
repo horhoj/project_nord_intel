@@ -1,5 +1,6 @@
+import { Box } from '@mui/material';
 import styles from './WelcomeMsg.module.scss';
 
 export function WelcomeMsg() {
-  return <div className={styles.WelcomeMsg}>Добро пожаловать</div>;
+  return <Box className={styles.WelcomeMsg}>Добро пожаловать</Box>;
 }
