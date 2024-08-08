@@ -1,5 +1,8 @@
 import { ActionReducerMapBuilder, AsyncThunk, Draft } from '@reduxjs/toolkit';
 
+// В данном файле находятся ФАБРИКИ для использования в слайсах редакса
+// Их предназначение в автоматизации и уменьшении бойлерплэйта
+
 export interface RequestStateProperty<T = unknown, E = unknown> {
   data: T | null;
   error: E | null;

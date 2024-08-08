@@ -37,6 +37,7 @@ interface FetchReposThunkPayload {
   order: string | null;
 }
 
+// Санка для запроса поиска по репозиториям
 const fetchReposThunk = createAsyncThunk(
   `SLICE_NAME/fetchCommentsThunk`,
   async ({ page, search, perPage, order, sort }: FetchReposThunkPayload, store) => {

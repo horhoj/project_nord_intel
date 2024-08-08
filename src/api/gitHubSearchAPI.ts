@@ -2,6 +2,10 @@ import { memoize } from './../utils/memoize';
 import { axiosInstance } from './apiTransport';
 import { FetchReposResponse } from './gitHubSearchAPI.types';
 
+// МЕМОИЗИРОВАННАЯ функция запроса к апи для поиска репозиториев
+// В принципе можно конечно было сделать время жизни кэша и его инвалидацию
+// но в рамках задания попросту отсуствует необходимость в этом
+
 export const fetchRepos = memoize(
   async ({
     page,

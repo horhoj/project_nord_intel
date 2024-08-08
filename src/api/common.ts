@@ -1,6 +1,7 @@
 import { AxiosError } from 'axios';
 import { ApiError } from './common.types';
 
+// Общий метод парсинга ошибки для АПИ
 export const getApiErrors = (e: unknown): ApiError => {
   if (e instanceof AxiosError) {
     return {

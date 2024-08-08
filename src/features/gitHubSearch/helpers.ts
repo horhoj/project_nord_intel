@@ -1,5 +1,6 @@
 import { PER_PAGE } from '~/api/const';
 
+// Хелпер для парсинга url query params
 export const getSearchParams = (searchParams: URLSearchParams) => {
   const search = searchParams.get('search') ?? '';
 
@@ -34,7 +35,7 @@ export const getSearchParams = (searchParams: URLSearchParams) => {
 };
 
 type Params = ReturnType<typeof getSearchParams>;
-
+// Хелпер для подготовки параметров перед записью их в URL
 export const prepareParamsToURL = (params: Params): Record<string, string> => {
   const result: Record<string, string> = {};
   Object.keys(params).forEach((key) => {
@@ -54,6 +55,7 @@ export const prepareParamsToURL = (params: Params): Record<string, string> => {
 
 export const prepareParams = (params: Params): Params => params;
 
+// Хелпер для получения последней страницы с учетом АПИ гитхаба
 export const getLastPage = (total: number, perPage: number) => {
   // согласно ограничению гитхаба на 1000 элементов в поиске
   let actualTotal = 1000;
@@ -65,6 +67,7 @@ export const getLastPage = (total: number, perPage: number) => {
   return lastPage;
 };
 
+// Хелпер для определения параметров сортировки
 export const getSortParams = (sortType: string, currentSort: string | null, currentOrder: string | null) => {
   let sort: string | null = sortType;
   let order: string | null = null;

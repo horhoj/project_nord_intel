@@ -1,8 +1,10 @@
+// Тип ответа для fetchRepos API
 export interface FetchReposResponse {
   total_count: number;
   incomplete_results: boolean;
   items: Item[];
 }
+// остальные типы не публичные и являются вспомогательными
 
 interface Item {
   id: number;
