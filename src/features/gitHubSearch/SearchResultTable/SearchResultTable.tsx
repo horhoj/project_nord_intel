@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Box, Button, Table } from '@mui/material';
+import { Box, Button, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import styles from './SearchResultTable.module.scss';
 import { SearchResultTableItem, SortType } from './SearchResultTable.types';
 import { ArrowDown, ArrowUp } from '~/assets/icons';
@@ -31,9 +31,9 @@ export function SearchResultTable({
       <Box>
         <Box className={styles.title}>Результаты поиска</Box>
         <Table className={styles.table}>
-          <Box component={'thead'}>
-            <Box component={'tr'}>
-              <Box component={'th'}>
+          <TableHead>
+            <TableRow>
+              <TableCell>
                 <Button
                   className={styles.columnHeaderButton}
                   onClick={() => alert(ALERT_ERROR_MSG)}
@@ -41,8 +41,8 @@ export function SearchResultTable({
                 >
                   Название
                 </Button>
-              </Box>
-              <Box component={'th'}>
+              </TableCell>
+              <TableCell>
                 <Button
                   className={styles.columnHeaderButton}
                   onClick={() => alert(ALERT_ERROR_MSG)}
@@ -50,44 +50,43 @@ export function SearchResultTable({
                 >
                   Язык
                 </Button>
-              </Box>
-              <Box component={'th'}>
+              </TableCell>
+              <TableCell>
                 <Button className={styles.columnHeaderButton} onClick={() => onSort('forks')} disabled={disabled}>
                   {sort === 'forks' && order === 'asc' && <ArrowUp />}
                   {sort === 'forks' && order === 'desc' && <ArrowDown />} Число форков
                 </Button>
-              </Box>
-              <Box component={'th'}>
+              </TableCell>
+              <TableCell>
                 <Button className={styles.columnHeaderButton} onClick={() => onSort('stars')} disabled={disabled}>
                   {sort === 'stars' && order === 'asc' && <ArrowUp />}
                   {sort === 'stars' && order === 'desc' && <ArrowDown />} Число звезд
                 </Button>
-              </Box>
-              <Box component={'th'}>
+              </TableCell>
+              <TableCell>
                 <Button className={styles.columnHeaderButton} onClick={() => onSort('updated')} disabled={disabled}>
                   {sort === 'updated' && order === 'asc' && <ArrowUp />}{' '}
                   {sort === 'updated' && order === 'desc' && <ArrowDown />} Дата обновления
                 </Button>
-              </Box>
-            </Box>
-          </Box>
-          <Box component={'tbody'}>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {searchResult.map((row, i) => (
-              <Box
-                component={'tr'}
+              <TableRow
                 key={row.id}
                 role={'button'}
                 onClick={() => onRowSelect(i)}
                 className={classNames(styles.row, i === rowSelectIdx && styles.rowSelect)}
               >
-                <Box component={'td'}>{row.full_name || row.name}</Box>
-                <Box component={'td'}>{row.language}</Box>
-                <Box component={'td'}>{row.forks}</Box>
-                <Box component={'td'}>{row.stargazers_count}</Box>
-                <Box component={'td'}>{new Date(row.pushed_at).toLocaleString()}</Box>
-              </Box>
+                <TableCell>{row.full_name || row.name}</TableCell>
+                <TableCell>{row.language}</TableCell>
+                <TableCell>{row.forks}</TableCell>
+                <TableCell>{row.stargazers_count}</TableCell>
+                <TableCell>{new Date(row.pushed_at).toLocaleString()}</TableCell>
+              </TableRow>
             ))}
-          </Box>
+          </TableBody>
         </Table>
         {searchResult.length === 0 && <Box className={styles.title}>Ничего не найдено</Box>}
       </Box>

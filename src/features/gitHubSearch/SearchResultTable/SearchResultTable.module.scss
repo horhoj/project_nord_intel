@@ -52,12 +52,22 @@
   cursor: pointer;
 
   &:hover {
-    background-color: #2196F3;
-    color: #fff;
+    background-color: #2196F3 !important;
+
+    & td {
+      color: #fff !important;
+    }
   }
 }
 
+
+
 .rowSelect {
-  background-color: #2196F3;
-  color: #fff;
+  background-color: #2196F3 !important;
+  color: #fff !important;
+
+  & td {
+    background-color: #2196F3;
+    color: #fff !important;
+  }
 }
